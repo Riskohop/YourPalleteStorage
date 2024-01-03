@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>Project</title>
+    <link rel="stylesheet" href="styleProject.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header">
+    <button onclick="window.open('index.html', '_self')"><img src="https://cdn-icons.flaticon.com/svg/3917/3917618.svg?token=exp=1704234264~hmac=b13e03ff1cbc3a1ba1dc49d7335c72da" alt=""></button>
+    <span>Your Projects</span>
+</header>
+<div class="main">
+    <div class="left-bar">
+        <span>Categories</span>
+        <ul class="list-categories">
+            <li>
+                <button name="All" onclick="SelectedCategory(this)">All</button>
+            </li>
+        </ul>
+        <button class="create-new" onclick="OpenNewCategory()">Create new Category</button>
+    </div>
+    <div class="main-window">
+        <div class="category Example">
+            <span>Example</span>
+            <div class="list-colors">
+                <div class="color noselect" onclick="CopyHEX(this)">
+                    <span onclick="">#000000</span>
+                </div>
+                <div class="create-project noselect" onclick="OpenNewColor(this)">
+                    <span>+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="new-category">
+    <div class="parameters">
+        <div class="parameters-header">
+            <span>New Category</span>
+            <button onclick="CloseNewCategory()"><img class="noselect" src="https://www.flaticon.com/svg/vstatic/svg/3917/3917189.svg?token=exp=1704222922~hmac=ba65529d9987b4a7dfa0da38b0dd55d3" alt="X"></button>
+        </div>
+        <div class="parameters-main">
+            <span>Category name</span>
+            <input type="text" name="project-name" id="project-name">
+        </div>
+        <div class="parameters-footer">
+            <span class="error-create-Category"></span>
+            <button onclick="NewCategory()">Create category</button>
+        </div>
+    </div>
+</div>
+<div class="new-color">
+    <div class="parameters">
+        <div class="parameters-header">
+            <span>New color</span>
+            <button onclick="CloseNewColor()"><img class="noselect" src="https://www.flaticon.com/svg/vstatic/svg/3917/3917189.svg?token=exp=1704222922~hmac=ba65529d9987b4a7dfa0da38b0dd55d3" alt="X"></button>
+        </div>
+        <div class="parameters-main">
+            <span>Color</span>
+            <input type="color" name="dashboard-name" id="dashboard-color">
+        </div>
+        <div class="parameters-footer">
+            <span></span>
+            <button id="new-color-btn" onclick="NewColor(this)">Create new color</button>
+        </div>
+    </div>
+</div>
+<script src="project.js"></script>
+</body>
+</html>
