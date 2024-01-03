@@ -1,3 +1,14 @@
+'use strict';
+
+window.onload = function () {
+    document.body.classList.add('loaded_hiding');
+    window.setTimeout(function () {
+        document.body.classList.add('loaded');
+        document.body.classList.remove('loaded_hiding');
+    }, 500);
+}
+
+
 let url = new URL(document.URL);
 let projectName = window.atob(url.searchParams.get("project"));
 document.title = projectName;

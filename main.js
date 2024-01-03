@@ -1,15 +1,24 @@
 'use strict';
 
+window.onload = function () {
+    document.body.classList.add('loaded_hiding');
+    window.setTimeout(function () {
+        document.body.classList.add('loaded');
+        document.body.classList.remove('loaded_hiding');
+    }, 500);
+}
 let projects = [];
 projects = JSON.parse(localStorage.getItem("projects"));
-if(!projects) projects = [];
+if (!projects) projects = [];
 Loadprojects();
+
 function OpenProject(projectElement) {
     const isHover = e => e.parentElement.querySelector(':hover') === e;
-    if(isHover(projectElement.firstElementChild.firstElementChild) === true ) return;
-    if(isHover(projectElement.lastElementChild) === true) return;
+    if (isHover(projectElement.firstElementChild.firstElementChild) === true) return;
+    if (isHover(projectElement.lastElementChild) === true) return;
     window.open(`project.html?project=${window.btoa(projectElement.lastElementChild.textContent)}`, "_self");
 }
+
 function Loadprojects() {
     projects.forEach(x => {
         const exampleProject = document.querySelector(".project");
@@ -30,6 +39,7 @@ function Loadprojects() {
         CloseNewProjectPanel();
     });
 }
+
 function OpenNewProjectPanel() {
     const newProjectForm = document.querySelector(".create-project-parameters");
     newProjectForm.style.position = 'fixed';
@@ -39,22 +49,23 @@ function OpenNewProjectPanel() {
     const colorPicker = document.querySelector("#dashboard-color");
     colorPicker.value = "#" + ((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0");
 }
+
 function CloseNewProjectPanel() {
     const newProjectForm = document.querySelector(".create-project-parameters");
     newProjectForm.style.position = 'absolute';
     newProjectForm.style.zIndex = "-999";
     newProjectForm.style.opacity = "0";
 }
+
 function CreateProject() {
     const projectName = document.querySelector("#project-name");
     const dashboardColor = document.querySelector("#dashboard-color");
 
-    if(!projectName.value) {
+    if (!projectName.value) {
         const errorMessage = document.querySelector(".error-create-project");
         errorMessage.textContent = "Project name empty!";
         return;
-    }
-    else if(projectName.value.length >= 30) {
+    } else if (projectName.value.length >= 30) {
         const errorMessage = document.querySelector(".error-create-project");
         errorMessage.textContent = "Project name >= 30 symbols!";
         return
@@ -82,12 +93,14 @@ function CreateProject() {
     ClearFields()
     CloseNewProjectPanel();
 }
+
 function ClearFields() {
     const projectName = document.querySelector("#project-name");
     const dashboardColor = document.querySelector("#dashboard-color");
     projectName.value = null;
     dashboardColor.value = null;
 }
+
 async function CopyHEX(element) {
     try {
         await navigator.clipboard.writeText(element.textContent)
@@ -98,3 +111,4 @@ async function CopyHEX(element) {
     }
 
 }
+
